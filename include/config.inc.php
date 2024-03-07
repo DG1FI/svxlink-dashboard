@@ -1,9 +1,15 @@
-<?php
+<?
 
-// header lines for information in site banner
+// category for header -> use "Hotspot", "Simplex" or "Repeater" 
 define("HEADER_CAT","Hotspot");
+
+// define your QTH
 define("HEADER_QTH","Burg b. Magdeburg");
+
+// define your QRG
 define("HEADER_QRG","433.200 MHz");
+
+// SysOp-Call
 define("HEADER_SYSOP","SysOp: DG1FI");
 
 // show additional FM network in site banner
@@ -15,6 +21,9 @@ define("EL_NODE_NR","123456");
 // enable full access from all networks inclusive internet if set to 1, default is 0
 define("FULLACCESS_OUTSIDE", 0);
 
+// Change TG from Outside during FULLACCESS from OUTSIDE?
+define("CHANGE_TG_OUTSIDE", 0);
+
 // add additional 10 buttons so we have 20 now, default is only 10 buttons
 define("ADD_BUTTONS", 0);
 
@@ -24,8 +33,9 @@ define("SHUTDOWN", 1);
 // show next to the menu hf propagation if set to 1, default is 0
 define("PROP_SHOW", 0);
 
-
+// TOP or BOTTOM
 define("MENUBUTTON", "TOP");
+
 //
 // Button keys define: description button, DTMF command or command, color of button
 //

@@ -227,30 +227,28 @@ if ($net1 == true || $net2 == true || $net3 == true || $net4 == true || FULLACCE
 <p style="margin-bottom:-9px;"></p>
 </div>
 </fieldset>
-    <?php
-} else {
-    ?>
-
-<fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:855px;margin-top:5px;margin-bottom:14px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:100%;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;white-space:normal;">
-<p style="margin: 0 auto;"></p>
-<form action="" method="POST" style="margin-top:4px;">
-  <center>
-  <label style="text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">Select Talkgroup # : </label>
-  <input type="text" id="dtmfsvx" name="dtmfsvx">
-  <input type="submit" value="Activate" class="green"><br>
-  </center>
-</form>
-    <?php
-    if ((isset($_POST["dtmfsvx"]) == true) && (trim($_POST["dtmfsvx"]) !=='') && (preg_match('/^\d+$/', $_POST["dtmfsvx"]))) {
-      $exec= "sudo -u svxlink sh -c \"echo '*91".$_REQUEST['dtmfsvx']."#' > ".$dtmfctrl."\"";
-   	  exec($exec, $output);
-      echo "<meta http-equiv='refresh' content='0'>";
-    }
-    ?>
-<p style="margin-bottom:-2px;"></p>
-</div>
-</fieldset>
-    <?php
-}
-?>
+<?} else {
+	if(CHANGE_TG_OUTSIDE) {?>
+	<fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:855px;margin-top:5px;margin-bottom:14px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+		<div style="padding:0px;width:100%;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;white-space:normal;">
+			<p style="margin: 0 auto;">
+			</p>
+			<form action="" method="POST" style="margin-top:4px;">
+				<center>
+					<label style="text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">
+						Select Talkgroup # : 
+					</label>
+					<input type="text" id="dtmfsvx" name="dtmfsvx">
+					<input type="submit" value="Activate" class="green"><br>
+				</center>
+			</form>
+			<?if ((isset($_POST["dtmfsvx"]) == true) && (trim($_POST["dtmfsvx"]) !=='') && (preg_match('/^\d+$/', $_POST["dtmfsvx"]))) {
+				$exec= "sudo -u svxlink sh -c \"echo '*91".$_REQUEST['dtmfsvx']."#' > ".$dtmfctrl."\"";
+				exec($exec, $output);
+				echo "<meta http-equiv='refresh' content='0'>";
+			}?>
+			<p style="margin-bottom:-2px;"></p>
+		</div>
+	</fieldset>
+	<?}
+}?>
